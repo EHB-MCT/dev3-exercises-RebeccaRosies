@@ -1,4 +1,4 @@
-class Teacher(override var name: String): Person(name) {
+class Teacher(override var name: String): Person(name), ChatPartner {
     override fun talk(){
         funFact()
     }

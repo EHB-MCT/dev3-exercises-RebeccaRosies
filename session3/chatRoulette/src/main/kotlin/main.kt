@@ -1,10 +1,11 @@
 import kotlin.random.Random
 fun main(){
-    var Noor = Student("Noor")
-    var Maaike = Teacher("Maaike")
-    var Bob = Comedian( "Bob")
+    var noor = Student("Noor")
+    var maaike = Teacher("Maaike")
+    var bob = Comedian( "Bob")
+    var clippy = Chatbot()
 
-    var people = arrayOf(Noor, Maaike, Bob)
+    var people = arrayOf(noor, maaike, bob, clippy)
 
     var chatPartner = people.random()
 

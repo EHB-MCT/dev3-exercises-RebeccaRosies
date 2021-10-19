@@ -1,4 +1,4 @@
-open class Person(open var name:String) {
+open class Person(internal open var name:String) {
     fun introduce() {
         println("hi, my name is $name")
     }
