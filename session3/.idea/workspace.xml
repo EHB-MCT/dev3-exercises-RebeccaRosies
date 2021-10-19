@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="943f198e-9388-421e-9f6a-fe99d73cbdc1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/Chatbot.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/Comedian.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/Student.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/Teacher.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/Person.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/Person.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chatRoulette/src/main/kotlin/main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,10 +1,13 @@
 import kotlin.random.Random
-
-var Timmie = Person("Timmie")
-var Marie =  Person("Marie")
-
-var people = arrayOf(Timmie,Marie)
-
-var randomPerson = people.random()
 fun main(){
-    println(randomPerson.introduce())}
+    var Noor = Student("Noor")
+    var Maaike = Teacher("Maaike")
+    var Bob = Comedian( "Bob")
+
+    var people = arrayOf(Noor, Maaike, Bob)
+
+    var chatPartner = people.random()
+
+    chatPartner.introduce()
+    chatPartner.talk()
+}
