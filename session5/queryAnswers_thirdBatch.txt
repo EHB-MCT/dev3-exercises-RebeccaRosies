@@ -1,0 +1,33 @@
+How much did William Brown pay in 2004?
+
+SELECT contactFirstName, contactLastName, SUM(amount)
+FROM customers
+INNER JOIN payments ON payments.customerNumber = customers.customerNumber
+WHERE contactFirstName = 'William' AND contactLastName = 'BROWN' AND paymentDate LIKE '2004%'
+
+William	Brown	38281.51
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Get a list of customer names and the name of their representative. Only include customers with a representative.
+
+SELECT customerName,firstName, lastName
+FROM customers
+INNER JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber
+
+Mini Gifts Distributors Ltd.	Leslie	Jennings
+Mini Wheels Co.	Leslie	Jennings
+Technics Stores Inc.	Leslie	Jennings
+Corporate Gift Ideas Co.	Leslie	Jennings
+The Sharp Gifts Warehouse	Leslie	Jennings
+(100 rows in total)
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+What office is customer The Sharp Gifts Warehouse tied to?
+
+SELECT customerName, offices.officeCode
+FROM customers
+INNER JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber
+iNNER JOIN offices ON offices.officeCode = employees.officeCode
+WHERE customerName = 'The Sharp Gifts Warehouse'
+
+The Sharp Gifts Warehouse	1
