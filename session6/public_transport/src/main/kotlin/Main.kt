@@ -21,17 +21,24 @@ fun main() {
                 credentials.databaseName,
        connectionProps)
 
-    println("succes!")
+    println("Hi! What city are you going to?")
+    val destination = readLine()
+    println("This is the first train leaving in the direction of $destination")
 
+    val statement = connection.prepareStatement("SELECT * FROM trains " +
+            "INNER JOIN rides ON trains.id = train " +
+            "WHERE destination_city = '$destination'" +
+            "ORDER BY date ASC\n, departure_time ASC\n" +
+            "LIMIT 1")
 
-    val statement = connection.prepareStatement("SELECT * FROM trains")
     // Replace the var without allowing full queries to be entered
     val result = statement.executeQuery()
     while(result.next()){
-        println(result.getString("id"))
-        println(result.getString("type"))
-        println(result.getString("max_speed"))
-        println(result.getString("max_passengers"))
+        println("type:" + result.getString("type"))
+        println("speed in km/h:" + result.getString("max_speed"))
+        println("max passengers:" + result.getString("max_passengers"))
+        println("date:" + result.getString("date"))
+        println("departure time:" + result.getString("departure_time"))
     }
 
 }
