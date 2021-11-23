@@ -1,6 +1,5 @@
 import java.sql.*
 import java.util.*
-import Credentials.*
 
 fun main() {
     Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance()
@@ -23,6 +22,17 @@ fun main() {
        connectionProps)
 
     println("succes!")
-}
 
+
+    val statement = connection.prepareStatement("SELECT * FROM trains")
+    // Replace the var without allowing full queries to be entered
+    val result = statement.executeQuery()
+    while(result.next()){
+        println(result.getString("id"))
+        println(result.getString("type"))
+        println(result.getString("max_speed"))
+        println(result.getString("max_passengers"))
+    }
+
+}
 
