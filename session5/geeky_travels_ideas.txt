@@ -1,0 +1,26 @@
+
+Disney:
+	aladdin: India, Agra
+	Doornroosje: France
+	Snowwhite: Germany
+	Mulan: China
+	Assepoester:France
+	Tangled: Germany
+	Belle: France
+	Ariel: Denmark
+	Tiana: USA, New Orleans
+	Merida: Schotland
+	Elsa: Norway
+	Moana: Tahiti
+
+
+Lord of the rings: 
+	 Mordor		New zealand, Tongariro National Park
+	 Dead Marshes	New zealand, Fiordland National Park 
+	 Isengard	New zealand, Mount Aspiring National Park 
+	 Hobbiton	New zaland, Matamata
+	 The Paths of the Dead	New zealand, The Putangirua Pinnacles
+	
+
+Narnia: 
+WIzard of OZ:

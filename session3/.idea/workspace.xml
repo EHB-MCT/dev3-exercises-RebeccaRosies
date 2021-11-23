@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="943f198e-9388-421e-9f6a-fe99d73cbdc1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../courseproject/come_park_with_me/src/main/kotlin/main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../session5/geeky_travels/src/main/kotlin/main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../session6/public_transport/src/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../session6/public_transport/src/main/kotlin/credentials.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../session6/public_transport/src/main/kotlin/main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../session1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../session1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
