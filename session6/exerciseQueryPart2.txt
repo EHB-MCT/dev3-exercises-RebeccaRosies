@@ -1,0 +1,23 @@
+    val today = LocalDate.now()
+    println(today)
+    println("Hi! What city are you going to?")
+    val destination = readLine()
+    println("These are the first 3 trains leaving in the direction of $destination today ($today)")
+
+    val statement = connection.prepareStatement("SELECT * FROM trains " +
+            "INNER JOIN rides ON trains.id = train " +
+            "WHERE destination_city = '$destination' AND date ='$today'" +
+            "ORDER BY departure_time ASC\n" +
+            "LIMIT 3")
+
+    // Replace the var without allowing full queries to be entered
+    val result = statement.executeQuery()
+    while(result.next()){
+        println("type:" + result.getString("type"))
+        println("speed in km/h:" + result.getString("max_speed"))
+        println("max passengers:" + result.getString("max_passengers"))
+        println("date:" + result.getString("date"))
+        println("departure time:" + result.getString("departure_time"))
+        println("departure platform:" + result.getString("departure_Platform"))
+        println("")
+    }
