@@ -31,14 +31,16 @@ fun main() {
 
     val statement = connection.prepareStatement("SELECT * FROM trains " +
             "INNER JOIN rides ON trains.id = train " +
-            "WHERE destination_city = '$destination' AND date ='$today'" +
+            "WHERE destination_city = ? AND date ='$today'" +
             "ORDER BY departure_time ASC\n" +
             "LIMIT 3")
 
 
 
-    // Replace the var without allowing full queries to be entered
+    // Replace the var (?) without allowing other (full) queries to be entered by adding ';'
+    statement.setString(1, "'$destination'")
     val result = statement.executeQuery()
+
     while(result.next()){
         println("type:" + result.getString("type"))
         println("speed in km/h:" + result.getString("max_speed"))
