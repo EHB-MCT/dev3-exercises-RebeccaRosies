@@ -25,41 +25,35 @@ class Duolingo {
 
 
     fun play(){
+        // get an array of 5 random words
         val numberOfWords = 5
         var randomElements = words.asSequence().shuffled().take(numberOfWords).toMutableList()
         println("let's start learning!")
         var i = randomElements.count()
 
-        while (i != 0) {
-            i -= 1
-            println("translate the following word to ${randomElements[i].language}")
-            println(randomElements[i].original)
+        // like a foreach loop but still adjustable in size
+        while (randomElements.isNotEmpty()) {
+            val currentWord  = randomElements.random()
+            println("translate the following word to ${currentWord.language}")
+            println(currentWord.original)
             var studentTranslation = readln()
 
-            var amountLeft = (i)
+
 
             when (studentTranslation) {
-                "${randomElements[i].translated}" -> println("good job! only  $amountLeft left")
+                "${currentWord.translated}" ->
+                    {   randomElements.remove(currentWord)
+                        var amountLeft = (randomElements.count())
+                        println("good job! only  $amountLeft left")
+                    }
                 else -> {
-                    randomElements.add(randomElements[i])
+                    var amountLeft = (randomElements.count())
                     println("that was wrong")
-                    println("the right answer is ${randomElements[i].translated}")
-                    i += 1
-                    amountLeft = (i)
-                    println("don't worry, you get to try again at the end :) there's now still $amountLeft left")
+                    println("the right answer is ${currentWord.translated}")
+                    println("don't worry, you get to try again later :) there's now still $amountLeft left")
                 }
             }
         }
-
-
-        var remaining = randomElements.remove(randomElements[0])
-
-
-
-
-
-
-
-
+        println("you're done, good job!")
     }
 }
