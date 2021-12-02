@@ -1,6 +1,7 @@
 import java.sql.*
 import java.util.*
 
+var offset = 0
 fun main(){
     // Create a driver: the library/class that will create the connection
     Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance()
@@ -43,6 +44,7 @@ fun main(){
     println(count)
 
     println("There are $count travel destinations for this category")
+
     //----GET THE INFORMATION OF THE FIRST DESTINATION ------------------------------------------------------
     val statement2 = connection.prepareStatement("SELECT * FROM TravelInfo " +
             "WHERE Category = ? " +
@@ -53,22 +55,60 @@ fun main(){
 
     while(result2.next()){
         println("this is the first option:" + result2.getString("subcategory"))
-        println("Destination:"+ result2.getString("country"))
-        println("more specifically:"+ result2.getString("city"))
-        println("The price (in euro) for this destination is only:"+ result2.getString("price_in _euro"))
-        println("The weather in this period is generally "+ result2.getString("weather"))
-        println("you will be staying for "+ result2.getString("number_of_days") + " days")
-        println("the departure date is on "+ result2.getString("departure_date") + " and the return date on "+ result2.getString("departure_date") )
-        println("a median of the reviews for this destination has a result of " + result2.getString("review") +" out of 10")
+        println("   Destination:"+ result2.getString("country"))
+        println("   more specifically:"+ result2.getString("city"))
+        println("   The price (in euro) for this destination is only:"+ result2.getString("price_in _euro"))
+        println("   The weather in this period is generally "+ result2.getString("weather"))
+        println("   you will be staying for "+ result2.getString("number_of_days") + " days")
+        println("   the departure date is on "+ result2.getString("departure_date") + " and the return date on "+ result2.getString("departure_date") )
+        println("   a median of the reviews for this destination has a result of " + result2.getString("review") +" out of 10")
     }
-    
+
+    //userInteraction 2---------------------------------------------------------
+    println("type 'next' to see the next destination, type 'select' to choose this destination")
+
+    when (readLine()){
+            "next" -> {println("do next")
+                        doNext(connection, chosenCategory)}
+            "previous" -> {println("do previous")}
+            "select" -> {println("do select")}
+            else -> {println("please type: 'next', 'previous', or 'select'")}
+    }
+
+}
+
+fun doNext (connection: Connection, chosenCategory: String?){
+    //----GET THE INFORMATION OF THE FIRST DESTINATION -------(where id > vorig id )-----------------------------------------------
+    offset += 1
+    val statement3 = connection.prepareStatement("SELECT * FROM TravelInfo " +
+            "WHERE Category = ? " +
+            "LIMIT 1 OFFSET $offset")
+    // Replace the var (?) without allowing other (full) queries to be entered by adding ';'
+
+    statement3.setString(1, chosenCategory)
+    val result3 = statement3.executeQuery()
+
+    while(result3.next()){
+        println("this is the next option:" + result3.getString("subcategory"))
+        println("   Destination:"+ result3.getString("country"))
+        println("   more specifically:"+ result3.getString("city"))
+        println("   The price (in euro) for this destination is only:"+ result3.getString("price_in _euro"))
+        println("   The weather in this period is generally "+ result3.getString("weather"))
+        println("   you will be staying for "+ result3.getString("number_of_days") + " days")
+        println("   the departure date is on "+ result3.getString("departure_date") + " and the return date on "+ result3.getString("departure_date") )
+        println("   a median of the reviews for this destination has a result of " + result3.getString("review") +" out of 10")
+    }
+
     //userInteraction 2---------------------------------------------------------
     println("type 'next' to see the next destination, type 'previous' to see the previous destination, type 'select' to choose this destination")
     when (readLine()){
-            "next" -> println("do next")
-            "previous" -> println("do previous")
-            "select" -> println("do select")
-            else -> println("please type: 'next', 'previous', or 'select'")
+        "next" -> {println("do next")
+                    doNext(connection, chosenCategory)}
+        "previous" -> {println("do previous")}
+        "select" -> {println("do select")}
+        else -> {println("please type: 'next', 'previous', or 'select'")}
     }
+
+}
 
 }
