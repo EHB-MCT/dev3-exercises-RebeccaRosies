@@ -23,6 +23,7 @@ fun main(){
         connectionProps)
 
     //userInteraction---------------------------------------------------------
+    //bigger tag system: println("Hi, how would you like to find your travel destination? Based on 'MovieFranchise', 'country', 'Main activity','weather', 'Main Character'")
     println("Hi!, Choose one of the following categories: Disney - Pixar - The Lord of the Rings - Narnia - Pirates of the Caribbean")
     val chosenCategory = readLine()
 
@@ -41,8 +42,6 @@ fun main(){
         resultList.add(result.getString("subcategory"))
         count = resultList.count()
     }
-    println(count)
-
     println("There are $count travel destinations for this category")
 
     //----GET THE INFORMATION OF THE FIRST DESTINATION ------------------------------------------------------
@@ -67,13 +66,7 @@ fun main(){
     //userInteraction 2---------------------------------------------------------
     println("type 'next' to see the next destination, type 'select' to choose this destination")
 
-    when (readLine()){
-            "next" -> {doNext(connection, chosenCategory)}
-            "previous" -> {doPrevious(connection, chosenCategory)}
-            "select" -> {doSelect(connection, chosenCategory)}
-            else -> {println("please type: 'next', 'previous', or 'select'")}
-    }
-
+    nextPreviousOrSelect(connection, chosenCategory)
 }
 
 fun doNext (connection: Connection, chosenCategory: String?) {
@@ -106,14 +99,8 @@ fun doNext (connection: Connection, chosenCategory: String?) {
 
     //userInteraction 2---------------------------------------------------------
     println("type 'next' to see the next destination, type 'previous' to see the previous destination, type 'select' to choose this destination")
-    when (readLine()) {
-        "next" -> {doNext(connection, chosenCategory)}
-        "previous" -> {doPrevious(connection, chosenCategory)}
-        "select" -> {doSelect(connection, chosenCategory)}
-        else -> {println("please type: 'next', 'previous', or 'select'")}
-    }
+    nextPreviousOrSelect(connection, chosenCategory)
 }
-
 
 fun doPrevious (connection: Connection, chosenCategory: String?){
     //----GET THE INFORMATION OF THE FIRST DESTINATION -------(where id > vorig id )-----------------------------------------------
@@ -139,13 +126,7 @@ fun doPrevious (connection: Connection, chosenCategory: String?){
 
     //userInteraction 2---------------------------------------------------------
     println("type 'next' to see the next destination, type 'previous' to see the previous destination, type 'select' to choose this destination")
-    when (readLine()){
-        "next" -> { doNext(connection, chosenCategory)}
-        "previous" -> { doPrevious(connection, chosenCategory)}
-        "select" -> { doSelect(connection, chosenCategory)}
-        else -> {println("please type: 'next', 'previous', or 'select'")}
-    }
-
+    nextPreviousOrSelect(connection, chosenCategory)
 }
 
 fun doSelect(connection: Connection, chosenCategory: String?){
@@ -154,12 +135,7 @@ fun doSelect(connection: Connection, chosenCategory: String?){
     when (readLine()){
         "yes" -> println(" ok, let's go!")
         "no" -> { println("type 'next' to see the next destination, type 'previous' to see the previous destination, type 'select' to choose this destination")
-            when (readLine()){
-                "next" -> {doNext(connection, chosenCategory)}
-                "previous" -> {doPrevious(connection, chosenCategory)}
-                "select" -> {doSelect(connection, chosenCategory)}
-                else -> {println("please type: 'next', 'previous', or 'select'")}
-            }
+            nextPreviousOrSelect(connection, chosenCategory)
         }
     }
 
@@ -193,11 +169,16 @@ fun doSelect(connection: Connection, chosenCategory: String?){
     }
 
     println("type 'next' to see the next destination, type 'previous' to see the previous destination, type 'select' to choose this destination")
+    nextPreviousOrSelect(connection, chosenCategory)
+}
+
+fun nextPreviousOrSelect(connection: Connection, chosenCategory: String?){
     when (readLine()){
         "next" -> {doNext(connection, chosenCategory)}
         "previous" -> {doPrevious(connection, chosenCategory)}
         "select" -> {doSelect(connection, chosenCategory)}
-        else -> {println("please type: 'next', 'previous', or 'select'")}
+        else -> {println("please type: 'next', 'previous', or 'select'")
+            nextPreviousOrSelect(connection, chosenCategory)
+        }
     }
 }
-
