@@ -1,7 +1,28 @@
-class Duolingo (
-    val roundSize: Int = 5,
-    var Language: String = "english"
-        ){
+class Duolingo {
+
+    //second constructor
+    var roundSize: Int = 5
+    var language: String = "english"
+    constructor(
+    roundSize: Int = 5,
+    language: String = "english"
+    ){
+        this.roundSize = roundSize
+        this.language = language
+    }
+
+    //first constructor
+    var level: String = "easy"
+    constructor(
+    level: String = "easy"
+    ){
+        this.level = level
+
+        if (level != "easy" && level != "hard" && level != null){
+            throw Exception ("assign difficulty as 'easy' or 'hard'")}
+    }
+
+
     val e_hallo = EnglishWord("hallo", "hello")
     val e_naam = EnglishWord("naam", "name")
     val e_huis = EnglishWord("huis", "house")
@@ -27,7 +48,8 @@ class Duolingo (
     var words = mutableListOf<Word>(e_hallo,e_naam, e_huis, e_tuin, e_strand, e_zee, e_zomer, e_lente, e_spel, e_feest, f_hallo, f_naam, f_huis, f_tuin, f_strand, f_zee, f_zomer, f_lente, f_spel, f_feest,)
 
     init{
-        words = words.filter{ it.language == Language }.toMutableList()
+        words = words.filter{ it.language == language }.toMutableList()
+
     }
 
     fun play(){
