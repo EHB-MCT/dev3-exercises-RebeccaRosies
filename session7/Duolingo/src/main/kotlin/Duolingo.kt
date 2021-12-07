@@ -1,5 +1,5 @@
 class Duolingo (
-    var roundSize: Int = 5,
+    val roundSize: Int = 5,
     var Language: String = "english"
         ){
     val e_hallo = Word("hallo", "hello", "english")
@@ -27,15 +27,15 @@ class Duolingo (
     var words = mutableListOf<Word>(e_hallo,e_naam, e_huis, e_tuin, e_strand, e_zee, e_zomer, e_lente, e_spel, e_feest, f_hallo, f_naam, f_huis, f_tuin, f_strand, f_zee, f_zomer, f_lente, f_spel, f_feest,)
 
     init{
-        println("pick your preferred language: english / francais")
+        words = words.filter{ it.language == Language }.toMutableList()
     }
+
     fun play(){
-        val chosenLanguage = readln()
-        val filteredWords = words.filter{ it.language == chosenLanguage }
+       // val filteredWords = words.filter{ it.language == Language }
 
         // get an array of 5 random words
         val numberOfWords = roundSize
-        var randomElements = filteredWords.asSequence().shuffled().take(numberOfWords).toMutableList()
+        var randomElements = words.asSequence().shuffled().take(numberOfWords).toMutableList()
         println("let's start learning!")
         var i = randomElements.count()
 
