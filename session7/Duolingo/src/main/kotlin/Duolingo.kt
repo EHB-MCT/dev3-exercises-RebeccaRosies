@@ -3,6 +3,7 @@ class Duolingo {
     //second constructor
     var roundSize: Int = 5
     var language: String = "english"
+
     constructor(
     roundSize: Int = 5,
     language: String = "english"
@@ -75,12 +76,19 @@ class Duolingo {
                     {   randomElements.remove(currentWord)
                         var amountLeft = (randomElements.count())
                         println("good job! only  $amountLeft left")
+
+                        currentWord.difficulty -= 1
+
+                        println("the current difficulty of this word is:" + currentWord.difficulty)
                     }
                 else -> {
                     var amountLeft = (randomElements.count())
                     println("that was wrong")
                     println("the right answer is ${currentWord.translated}")
                     println("don't worry, you get to try again later :) there's now still $amountLeft left")
+
+                    currentWord.difficulty += 2
+                    println("the current difficulty of this word is:" + currentWord.difficulty)
                 }
             }
         }
