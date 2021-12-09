@@ -24,7 +24,7 @@ class Duolingo {
     }
 
     val wordDeck = WordDeck()
-    
+
     init{
         wordDeck.filterByLanguage(language)
 

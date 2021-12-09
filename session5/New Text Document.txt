@@ -1,0 +1,14 @@
+fun next(){
+        val statement = connection.prepareStatement("SELECT * FROM TravelInfo " +
+                "WHERE Category = ? " +
+                "LIMIT 1")
+        // Replace the var (?) without allowing other (full) queries to be entered by adding ';'
+        statement.setString(1, chosenCategory)
+        val result = statement.executeQuery()
+
+        // Show results -----------------------------------------------------------
+        while(result.next()){
+            println("There are x amount of travel destinations for this category")
+            println("this is the first option:" + result.getString("subcategory"))
+        }
+    }

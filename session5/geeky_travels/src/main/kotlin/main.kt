@@ -23,7 +23,7 @@ fun main(){
         connectionProps)
 
     //userInteraction---------------------------------------------------------
-    //bigger tag system: println("Hi, how would you like to find your travel destination? Based on 'MovieFranchise', 'country', 'Main activity','weather', 'Main Character'")
+    //bigger tag system: println("Hi, how would you like to find your travel destination? Based on 'MovieFranchise', 'country', 'Main activity','weather' or 'Main Character'")
     println("Hi!, Choose one of the following categories: Disney - Pixar - The Lord of the Rings - Narnia - Pirates of the Caribbean")
     val chosenCategory = readLine()
 
@@ -65,7 +65,6 @@ fun main(){
 
     //userInteraction 2---------------------------------------------------------
     println("type 'next' to see the next destination, type 'select' to choose this destination")
-
     nextPreviousOrSelect(connection, chosenCategory)
 }
 
